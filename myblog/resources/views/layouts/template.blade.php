@@ -51,6 +51,9 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{{url('/produk')}}">Produk</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{{url('/buku')}}">Buku</a>
+                    </li>
                 </ul>
             </div>
         </div>

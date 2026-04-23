@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use app\Http\Controllers\HalloController;
+use App\Http\Controllers\BukuController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -76,3 +77,9 @@ Route::get('/tentangKami', function () {
 Route::get('/produk', function () {
     return view('pages.produk');
 });
+
+// Route::get('/buku', function ([BukuController::class,'index'])->name('buku');
+
+Route::get('/buku', [BukuController::class, 'index'])->name('buku');
+Route::get('/create', [BukuController::class, 'create'])->name('form-create');
+Route::post('/store', [BukuController::class, 'store'])->name('store');
