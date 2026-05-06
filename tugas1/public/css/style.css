@@ -1,0 +1,123 @@
+header {
+  background-color: #141414;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  font-family: 'Pacifico', cursive;
+}
+
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  color: white;
+  padding: 10px 20px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+}
+
+.line {
+    width: auto;      
+    height: 2px;      
+    background-color: black;
+    border: none;
+    margin: 10px 0;
+}
+
+a{
+    text-decoration: none;
+	gap: 15px;
+	color: rgb(0, 0, 0);
+	margin:0;
+	padding:0;
+}
+a:hover{
+	color: #6c6c6c;
+}
+
+section {
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+	padding:0;
+	background:#ffff;
+	flex: 1;
+}
+
+.secHome{
+    display: grid;
+	grid-template-columns: 2fr 1fr;
+	gap: 20px;
+	padding: 20px;
+	background:white;
+	flex: 1;
+}
+
+article {
+	background-color: #ffffff;
+	padding: 15px;
+	border-radius: 8px;
+}
+
+.artHome{
+    margin-left: 210px;
+    width: 500px;
+    background-color: #ffffff;
+	padding: 60px;
+}
+
+aside {
+    margin-right: 160px;
+	background-color: #000000;
+	padding: 2px;
+    border-radius: 10px;
+}
+
+.asideAssignment{
+    margin-top: 120px;
+    margin-left: 80px;
+	background-color: #ffffff;
+	padding: 2px;
+    border-radius: 10px;
+}
+
+
+footer {
+	background-color: #ffffff;
+	color: #000000;
+	text-align: center;
+	padding: 15px;
+}
+
+p{
+    text-align: justify;
+	color: black;
+	font-family:'Times New Roman', Times, serif;
+}
+h1{
+    color: rgb(0, 0, 0);
+    font-family:'Times New Roman', Times, serif;
+    text-align: center;
+}
+
+.card-container {
+    display: flex;          
+    gap: 20px;              
+    justify-content: center; 
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.card {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    padding: 20px;
+    width: 250px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
