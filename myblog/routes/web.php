@@ -78,6 +78,7 @@ Route::get('/produk', function () {
     return view('pages.produk');
 });
 
+//. 
 // Route::get('/buku', function ([BukuController::class,'index'])->name('buku');
 
 //routing untuk create dan tambah
