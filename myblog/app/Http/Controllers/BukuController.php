@@ -22,7 +22,7 @@ class BukuController extends Controller
         //cara dua orm yang bagus suapaya tidak pakai query manual
         // $dataBuku = Buku::all();
 
-        $dataBuku = Buku::orderBy('id', 'desc')->get();
+        $dataBuku = Buku::orderBy('id', 'asc')->get();
 
         return view('pages.buku.daftar-buku', compact('dataBuku'));
 
@@ -46,17 +46,29 @@ class BukuController extends Controller
         //ngambil data dari form
         // dd($request->judul);
 
-        $validate = $request->validate([
-            'judul'=>'required|min:5',
-            'penulis'=>'required|min:5',
-            'harga'=>'required|numeric',
-            'tahun_terbit'=>'required|numeric',
-        ]);
+        $validate = $request->validate(
+            [
+                'judul'=>'required|min:5',
+                'penulis'=>'required|min:5',
+                'harga'=>'required|numeric',
+                'tahun_terbit'=>'required|numeric',
+            ],
+
+            //custom validasi
+            [
+                'judul.required' => 'judul buku tidak boleh di kosongkan',
+                'judul.min' => 'judul buku terlalu pendek, minimal 5 karakter',
+                'penulis.required' => 'nama penulis tidak boleh di kosongkan',
+                'penulis.min' => 'isi nama lengkap',
+                'harga.required' => 'harga harus numeric',
+                'tahun_terbit.required' => 'tahun terbit harus numeric',
+            ]
+        );
 
         $validate['kategori_id'] =1;
 
         Buku::create($validate);
-        return redirect()->route('buku');
+        return redirect()->route('buku')->with('success','buku baru berhasil di tambahkan');
     }
 
     /**
@@ -64,7 +76,15 @@ class BukuController extends Controller
      */
     public function show(string $id)
     {
-        //
+        //detail buku dengan query builder
+        // $detailBuku = DB::table('buku')->where('id',$id)->firstOrFail();
+
+        //orm
+        $detailBuku = Buku :: findOrFail($id);
+        // dd($detailBuku);
+
+        return view('pages.buku.detail-buku', compact('detailBuku'));
+        
     }
 
     /**
@@ -73,6 +93,8 @@ class BukuController extends Controller
     public function edit(string $id)
     {
         //
+        $detailBuku = Buku::findOrFail($id);
+        return view('pages.buku.form-buku', compact('detailBuku'));   
     }
 
     /**
@@ -81,6 +103,29 @@ class BukuController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $validate = $request->validate(
+            [
+                'judul'=>'required|min:5',
+                'penulis'=>'required|min:5',
+                'harga'=>'required|numeric',
+                'tahun_terbit'=>'required|numeric',
+            ],
+
+            //custom validasi
+            [
+                'judul.required' => 'judul buku tidak boleh di kosongkan',
+                'judul.min' => 'judul buku terlalu pendek, minimal 5 karakter',
+                'penulis.required' => 'nama penulis tidak boleh di kosongkan',
+                'penulis.min' => 'isi nama lengkap',
+                'harga.required' => 'harga harus numeric',
+                'tahun_terbit.required' => 'tahun terbit harus numeric',
+            ]
+        );
+
+        $validate['kategori_id'] =1;
+
+        Buku::where('id', $id)->update($validate);
+        return redirect()->route('buku')->with('success','buku baru berhasil di rubah');
     }
 
     /**

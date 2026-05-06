@@ -80,6 +80,16 @@ Route::get('/produk', function () {
 
 // Route::get('/buku', function ([BukuController::class,'index'])->name('buku');
 
+//routing untuk create dan tambah
 Route::get('/buku', [BukuController::class, 'index'])->name('buku');
 Route::get('/create', [BukuController::class, 'create'])->name('form-create');
+//post untuk simpan
 Route::post('/store', [BukuController::class, 'store'])->name('store');
+
+//routing untuk detail
+Route::get('/detail-buku/{id}/detail-data-buku', [BukuController::class, 'show'])->name('detail-buku');
+
+//route untuk edit
+Route::get('/edit-buku/{id}/edit-data-buku', [BukuController::class, 'edit'])->name('edit-buku');
+//put utnutk edit dan hapus
+Route::put('/update-buku/{id}/update-data-buku', [BukuController::class, 'update'])->name('update');
