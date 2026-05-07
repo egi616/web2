@@ -33,9 +33,13 @@
                         <td>{{$item->harga}}</td>
                         <td>{{$item->tahun_terbit}}</td>
                         <td class="text-center">
-                            <button type="button" class="btn btn-danger btn-sm">Hapus</button>
-                            <a href="{{route ('edit-buku', ['id'=>$item->id])}}" class="btn btn-warning btn-sm">Edit</a>
-                            <a href="{{route ('detail-buku', ['id'=>$item->id])}}" class="btn btn-info btn-sm">Detail</a>
+                            <form action="{{route ('destroy', ['id'=>$item->id])}}" method="POST" class="d-inline" onsubmit="return confirm('Apakah anda yakin akan menghapus buku ini?')">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
+                            </form>
+                                <a href="{{route ('edit-buku', ['id'=>$item->id])}}" class="btn btn-warning btn-sm">Edit</a>
+                                <a href="{{route ('detail-buku', ['id'=>$item->id])}}" class="btn btn-info btn-sm">Detail</a>
                         </td>
                     </tr>
                     @endforeach

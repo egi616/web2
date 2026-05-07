@@ -94,3 +94,5 @@ Route::get('/detail-buku/{id}/detail-data-buku', [BukuController::class, 'show']
 Route::get('/edit-buku/{id}/edit-data-buku', [BukuController::class, 'edit'])->name('edit-buku');
 //put utnutk edit dan hapus
 Route::put('/update-buku/{id}/update-data-buku', [BukuController::class, 'update'])->name('update');
+
+Route::delete('/buku/{id}/delete-data-buku', [BukuController::class, 'destroy'])->name('destroy');
